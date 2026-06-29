@@ -140,6 +140,10 @@ h1 {
   letter-spacing: 0;
 }
 
+.hero-word {
+  display: inline-block;
+}
+
 h2 {
   margin-bottom: 18px;
   color: var(--navy);

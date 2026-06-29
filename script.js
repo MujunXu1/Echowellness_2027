@@ -2,6 +2,7 @@ const navToggle = document.querySelector(".nav-toggle");
 const siteNav = document.querySelector(".site-nav");
 const navLinks = Array.from(document.querySelectorAll(".site-nav a"));
 const sections = Array.from(document.querySelectorAll("main section[id]"));
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 if (navToggle && siteNav) {
   navToggle.addEventListener("click", () => {
@@ -116,3 +117,92 @@ document.addEventListener("keydown", (event) => {
     closeLightbox();
   }
 });
+
+function splitHeroTitle() {
+  const title = document.querySelector("#hero-title");
+
+  if (!title) {
+    return [];
+  }
+
+  const words = title.textContent.trim().split(/\s+/);
+  title.textContent = "";
+
+  return words.map((word, index) => {
+    const span = document.createElement("span");
+    span.className = "hero-word";
+    span.textContent = word;
+    title.append(span);
+
+    if (index < words.length - 1) {
+      title.append(" ");
+    }
+
+    return span;
+  });
+}
+
+function initMotion() {
+  if (prefersReducedMotion || !window.gsap) {
+    return;
+  }
+
+  document.documentElement.dataset.motion = "gsap";
+  const heroWords = splitHeroTitle();
+
+  gsap.from(".site-header", {
+    y: -14,
+    opacity: 0,
+    duration: 0.5,
+    ease: "power2.out",
+  });
+
+  const heroTimeline = gsap.timeline({
+    defaults: {
+      duration: 0.65,
+      ease: "power3.out",
+    },
+  });
+
+  heroTimeline
+    .from(".hero-copy .eyebrow", { y: 12, opacity: 0 })
+    .from(heroWords, { y: 28, opacity: 0, stagger: 0.045 }, "-=0.3")
+    .from(".hero-lede", { y: 18, opacity: 0 }, "-=0.25")
+    .from(".hero-actions .button", { y: 14, opacity: 0, stagger: 0.08 }, "-=0.25")
+    .from(".fund-card", { y: 22, opacity: 0 }, "-=0.35");
+
+  const revealItems = document.querySelectorAll(
+    ".banner-strip img, .summary-strip article, .mission-section > *, .school-copy, .school-gallery, .priority-grid article, .impact-section > *, .photos-section .section-heading, .photo-scroll figure, .contact-section > *"
+  );
+
+  const revealObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+
+        gsap.fromTo(
+          entry.target,
+          { y: 24, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.65,
+            ease: "power2.out",
+            clearProps: "transform,opacity",
+          }
+        );
+        observer.unobserve(entry.target);
+      });
+    },
+    {
+      rootMargin: "0px 0px -12% 0px",
+      threshold: 0.18,
+    }
+  );
+
+  revealItems.forEach((item) => revealObserver.observe(item));
+}
+
+initMotion();
