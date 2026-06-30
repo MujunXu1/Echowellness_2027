@@ -151,28 +151,28 @@ function initMotion() {
   const heroWords = splitHeroTitle();
 
   gsap.from(".site-header", {
-    y: -14,
+    y: -8,
     opacity: 0,
-    duration: 0.5,
+    duration: 0.45,
     ease: "power2.out",
   });
 
   const heroTimeline = gsap.timeline({
     defaults: {
-      duration: 0.65,
+      duration: 0.55,
       ease: "power3.out",
     },
   });
 
   heroTimeline
-    .from(".hero-copy .eyebrow", { y: 12, opacity: 0 })
-    .from(heroWords, { y: 28, opacity: 0, stagger: 0.045 }, "-=0.3")
-    .from(".hero-lede", { y: 18, opacity: 0 }, "-=0.25")
-    .from(".hero-actions .button", { y: 14, opacity: 0, stagger: 0.08 }, "-=0.25")
-    .from(".fund-card", { y: 22, opacity: 0 }, "-=0.35");
+    .from(".hero-copy .eyebrow", { y: 8, opacity: 0 })
+    .from(heroWords, { y: 18, opacity: 0, stagger: 0.035 }, "-=0.25")
+    .from(".hero-lede", { y: 12, opacity: 0 }, "-=0.25")
+    .from(".hero-actions .button", { y: 10, opacity: 0, stagger: 0.06 }, "-=0.2")
+    .from(".fund-card", { y: 14, opacity: 0 }, "-=0.3");
 
   const revealItems = document.querySelectorAll(
-    ".banner-strip img, .summary-strip article, .mission-section > *, .school-copy, .school-gallery, .priority-grid article, .impact-section > *, .photos-section .section-heading, .photo-scroll figure, .contact-section > *"
+    ".banner-strip img, .summary-strip, .mission-section > *, .org-grid article, .school-copy, .school-gallery, .priority-grid article, .impact-section > *, .future-grid article, .photos-section .section-heading, .photo-scroll-wrap, .contact-section > *"
   );
 
   const revealObserver = new IntersectionObserver(
@@ -184,11 +184,11 @@ function initMotion() {
 
         gsap.fromTo(
           entry.target,
-          { y: 24, opacity: 0 },
+          { y: 16, opacity: 0 },
           {
             y: 0,
             opacity: 1,
-            duration: 0.65,
+            duration: 0.55,
             ease: "power2.out",
             clearProps: "transform,opacity",
           }

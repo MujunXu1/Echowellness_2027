@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta
       name="description"
-      content="EchoWellness is raising funds for Journey School, supporting specialized education and independence for students."
+      content="EchoWellness is a student-led nonprofit building community through wellness, fundraising, performances, and service."
     >
-    <title>EchoWellness | Journey School Fundraiser</title>
+    <title>EchoWellness | Student-Led Nonprofit</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     >
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=2">
   </head>
   <body>
     <header class="site-header">
@@ -29,11 +29,13 @@
       </button>
 
       <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+        <a href="#about">About</a>
         <a href="#mission">Mission</a>
-        <a href="#school">Journey School</a>
-        <a href="#goal">Fund</a>
-        <a href="#impact">Impact</a>
-        <a href="#photos">Events</a>
+        <a href="#work">What We Do</a>
+        <a href="#photos">Past Events</a>
+        <a href="#school">Current Event</a>
+        <a href="#goal">What We Fund</a>
+        <a href="#future">Future</a>
         <a class="nav-cta" href="#donate">Donate</a>
       </nav>
     </header>
@@ -41,48 +43,44 @@
     <main id="home">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
-          <p class="eyebrow">Student-Led Nonprofit Fundraiser</p>
-          <h1 id="hero-title">Supporting specialized education at Journey School</h1>
+          <p class="eyebrow">EchoWellness</p>
+          <h1 id="hero-title">Students building community through wellness and giving</h1>
           <p class="hero-lede">
-            EchoWellness is raising funds for Journey School, a Greater Houston
-            school serving children with differing abilities.
+            EchoWellness is a student-led nonprofit that organizes fundraisers,
+            performances, and service projects to support community wellbeing.
           </p>
+          <div class="hero-kicker" aria-label="EchoWellness focus areas">
+            <span>Fundraising</span>
+            <span>Student leadership</span>
+            <span>Community wellness</span>
+          </div>
           <div class="hero-actions" aria-label="Primary actions">
-            <a class="button button-primary" href="https://givebutter.com/2026-echowellness-charity-fundraiser-jbeoxw" target="_blank" rel="noopener">
-              Donate now
-            </a>
-            <a class="button button-secondary" href="#school">Learn about the campaign</a>
+            <a class="button button-primary" href="#about">About EchoWellness</a>
+            <a class="button button-secondary" href="#photos">Past events</a>
           </div>
         </div>
 
-        <aside class="fund-card" aria-label="Fundraiser goal">
-          <p class="eyebrow">2026 Campaign Goal</p>
-          <strong>$17,500</strong>
-          <p>Funds support classroom supplies, learning resources, and independence skills.</p>
+        <aside class="fund-card" aria-label="EchoWellness current campaign">
+          <p class="eyebrow">Currently Supporting</p>
+          <strong>Journey School</strong>
+          <p>Our current event supports specialized education and independence skills for Journey School students.</p>
           <dl>
             <div>
-              <dt>Beneficiary</dt>
-              <dd>Journey School</dd>
+              <dt>Goal</dt>
+              <dd>$17,500</dd>
             </div>
             <div>
-              <dt>Focus</dt>
-              <dd>Education and independence</dd>
+              <dt>Donate</dt>
+              <dd><a href="https://givebutter.com/2026-echowellness-charity-fundraiser-jbeoxw" target="_blank" rel="noopener">Givebutter campaign</a></dd>
             </div>
           </dl>
         </aside>
       </section>
 
-      <section class="banner-strip" aria-label="Journey School students">
-        <img
-          src="assets/journey-school/journey-banner.jpg"
-          alt="Journey School students working together during a classroom activity."
-        >
-      </section>
-
-      <section class="summary-strip" aria-label="Campaign summary">
+      <section id="about" class="summary-strip" aria-label="EchoWellness summary">
         <article>
           <strong>$25k+</strong>
-          <span>raised since 2023</span>
+          <span>raised for community causes since 2023</span>
         </article>
         <article>
           <strong>74</strong>
@@ -96,107 +94,45 @@
 
       <section id="mission" class="section split mission-section">
         <div>
-          <p class="eyebrow">Mission</p>
-          <h2>Student-led fundraising with a clear purpose.</h2>
+          <p class="eyebrow">Who We Are</p>
+          <h2>A student-run organization centered on wellness, leadership, and service.</h2>
         </div>
         <div class="body-copy">
-          <p>
-            EchoWellness is a fully student-run organization that creates
-            fundraising events for community causes.
+          <p class="lead-statement">
+            We create events that give students real responsibility and give
+            communities meaningful support.
           </p>
           <p>
-            Members plan, perform, and lead each campaign while building a
-            supportive environment for students and families.
+            EchoWellness gives students a platform to lead meaningful projects,
+            bring people together, and support organizations doing important work.
+          </p>
+          <p>
+            Our work combines fundraising, student performances, outreach, and
+            community partnerships so every campaign has a clear purpose.
           </p>
         </div>
       </section>
 
-      <section id="school" class="section school-section">
-        <div class="school-copy">
-          <p class="eyebrow">Journey School</p>
-          <h2>A fundraiser for Journey School.</h2>
-          <p>
-            Journey School serves uniquely gifted and talented students in the
-            Greater Houston area. This campaign supports resources that help
-            students learn, grow, and build independence.
-          </p>
-          <a class="text-link" href="https://journeyschooltx.org/" target="_blank" rel="noopener">
-            Visit Journey School
-          </a>
-        </div>
-        <div class="school-gallery" aria-label="Journey School photo gallery">
-          <div class="school-gallery-head">
-            <div>
-              <button class="photo-nav" type="button" data-scroll-target="school-scroll" data-scroll-direction="-1" aria-label="Scroll school photos left">←</button>
-              <button class="photo-nav" type="button" data-scroll-target="school-scroll" data-scroll-direction="1" aria-label="Scroll school photos right">→</button>
-            </div>
-          </div>
-          <div id="school-scroll" class="school-scroll" tabindex="0" aria-label="Swipe through Journey School photos">
-            <figure>
-              <button class="photo-trigger" type="button">
-                <img src="assets/journey-school/journey-classroom.png" alt="Journey School students working together during a classroom activity.">
-              </button>
-            </figure>
-            <figure>
-              <button class="photo-trigger" type="button">
-                <img src="assets/journey-school/journey-outdoor.png" alt="Journey School student walking outside on campus.">
-              </button>
-            </figure>
-            <figure>
-              <button class="photo-trigger" type="button">
-                <img src="assets/journey-school/journey-session.png" alt="Journey School student working with a teacher at a table.">
-              </button>
-            </figure>
-            <figure>
-              <button class="photo-trigger" type="button">
-                <img src="assets/journey-school/journey-students.png" alt="Two Journey School students sitting together outdoors.">
-              </button>
-            </figure>
-          </div>
-        </div>
-      </section>
-
-      <section id="goal" class="section goal-section">
+      <section id="work" class="section org-section">
         <div class="section-heading">
-          <p class="eyebrow">Where Donations Go</p>
-          <h2>Focused support for student learning.</h2>
+          <p class="eyebrow">What EchoWellness Does</p>
+          <h2>We turn student energy into community support.</h2>
         </div>
-        <div class="priority-grid">
+        <div class="org-grid">
           <article>
             <span>01</span>
-            <h3>Classroom supplies</h3>
-            <p>Daily materials used by students and teachers.</p>
+            <h3>Fundraising campaigns</h3>
+            <p>Each year, students choose a cause and organize a focused campaign around it.</p>
           </article>
           <article>
             <span>02</span>
-            <h3>Educational resources</h3>
-            <p>Learning tools matched to student needs.</p>
+            <h3>Student-led events</h3>
+            <p>Members help plan performances, outreach, and community gatherings.</p>
           </article>
           <article>
             <span>03</span>
-            <h3>Independence skills</h3>
-            <p>Support for confidence and practical life skills.</p>
-          </article>
-        </div>
-      </section>
-
-      <section id="impact" class="section impact-section">
-        <div>
-          <p class="eyebrow">Donation Examples</p>
-          <h2>Every contribution helps.</h2>
-        </div>
-        <div class="impact-table" role="list" aria-label="Donation impact examples">
-          <article role="listitem">
-            <strong>$25</strong>
-            <p>Provides classroom supplies.</p>
-          </article>
-          <article role="listitem">
-            <strong>$100</strong>
-            <p>Supports one week of educational resources.</p>
-          </article>
-          <article role="listitem">
-            <strong>Any amount</strong>
-            <p>Supports Journey School students.</p>
+            <h3>Community partnerships</h3>
+            <p>EchoWellness works with local organizations to support real needs.</p>
           </article>
         </div>
       </section>
@@ -276,17 +212,132 @@
         </div>
       </section>
 
+      <section id="school" class="section school-section">
+        <div class="school-copy">
+          <p class="eyebrow">Current Event</p>
+          <h2>Journey School fundraiser.</h2>
+          <p>
+            Journey School is EchoWellness' current fundraising focus. It is one
+            part of our larger work creating student-led events that support
+            community wellbeing.
+          </p>
+          <a class="text-link" href="https://journeyschooltx.org/" target="_blank" rel="noopener">
+            Visit Journey School
+          </a>
+        </div>
+        <div class="school-gallery" aria-label="Journey School photo gallery">
+          <div class="school-gallery-head">
+            <div>
+              <button class="photo-nav" type="button" data-scroll-target="school-scroll" data-scroll-direction="-1" aria-label="Scroll school photos left">←</button>
+              <button class="photo-nav" type="button" data-scroll-target="school-scroll" data-scroll-direction="1" aria-label="Scroll school photos right">→</button>
+            </div>
+          </div>
+          <div id="school-scroll" class="school-scroll" tabindex="0" aria-label="Swipe through Journey School photos">
+            <figure>
+              <button class="photo-trigger" type="button">
+                <img src="assets/journey-school/journey-classroom.png" alt="Journey School students working together during a classroom activity.">
+              </button>
+            </figure>
+            <figure>
+              <button class="photo-trigger" type="button">
+                <img src="assets/journey-school/journey-outdoor.png" alt="Journey School student walking outside on campus.">
+              </button>
+            </figure>
+            <figure>
+              <button class="photo-trigger" type="button">
+                <img src="assets/journey-school/journey-session.png" alt="Journey School student working with a teacher at a table.">
+              </button>
+            </figure>
+            <figure>
+              <button class="photo-trigger" type="button">
+                <img src="assets/journey-school/journey-students.png" alt="Two Journey School students sitting together outdoors.">
+              </button>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="goal" class="section goal-section">
+        <div class="section-heading">
+          <p class="eyebrow">What We Are Working On</p>
+          <h2>Focused support for student learning.</h2>
+        </div>
+        <div class="priority-grid">
+          <article>
+            <span>01</span>
+            <h3>Classroom supplies</h3>
+            <p>Daily materials used by students and teachers.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Educational resources</h3>
+            <p>Learning tools matched to student needs.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Independence skills</h3>
+            <p>Support for confidence and practical life skills.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="impact" class="section impact-section">
+        <div>
+          <p class="eyebrow">Donation Examples</p>
+          <h2>Every contribution helps.</h2>
+        </div>
+        <div class="impact-table" role="list" aria-label="Donation impact examples">
+          <article role="listitem">
+            <strong>$25</strong>
+            <p>Provides classroom supplies.</p>
+          </article>
+          <article role="listitem">
+            <strong>$100</strong>
+            <p>Supports one week of educational resources.</p>
+          </article>
+          <article role="listitem">
+            <strong>Any amount</strong>
+            <p>Supports Journey School students.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="future" class="section future-section">
+        <div class="section-heading">
+          <p class="eyebrow">Future Direction</p>
+          <h2>Building a stronger student-led platform.</h2>
+          <p>
+            EchoWellness is continuing to grow beyond one fundraiser by developing
+            more events, partnerships, and opportunities for students to lead.
+          </p>
+        </div>
+        <div class="future-grid">
+          <article>
+            <h3>More student-led campaigns</h3>
+            <p>Future projects will continue to connect student creativity with community needs.</p>
+          </article>
+          <article>
+            <h3>Stronger partnerships</h3>
+            <p>EchoWellness plans to work with more schools and organizations over time.</p>
+          </article>
+          <article>
+            <h3>Expanded involvement</h3>
+            <p>The goal is to give more students a meaningful role in service and leadership.</p>
+          </article>
+        </div>
+      </section>
+
       <section id="donate" class="section contact-section">
         <div>
           <p class="eyebrow">Donate</p>
-          <h2>Support the Journey School fundraiser.</h2>
+          <h2>Support our current fundraiser.</h2>
           <p>
-            Online donations are handled through Givebutter.
+            This year's Givebutter campaign supports Journey School students.
           </p>
         </div>
         <div class="contact-card">
-          <h3>Givebutter donation page</h3>
-          <p>Use the official campaign page to donate or share the fundraiser.</p>
+          <h3>Journey School fundraiser</h3>
+          <p>Donate or share the official EchoWellness campaign page.</p>
           <a class="button button-primary" href="https://givebutter.com/2026-echowellness-charity-fundraiser-jbeoxw" target="_blank" rel="noopener">
             Donate on Givebutter
           </a>
@@ -306,15 +357,17 @@
     <footer class="site-footer">
       <p>&copy; 2026 EchoWellness</p>
       <div>
+        <a href="#about">About</a>
         <a href="#mission">Mission</a>
-        <a href="#school">School</a>
-        <a href="#impact">Impact</a>
-        <a href="#photos">Events</a>
+        <a href="#work">What We Do</a>
+        <a href="#photos">Past Events</a>
+        <a href="#school">Current Event</a>
+        <a href="#future">Future</a>
         <a href="https://givebutter.com/2026-echowellness-charity-fundraiser-jbeoxw" target="_blank" rel="noopener">Donate</a>
       </div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="script.js?v=12"></script>
+    <script src="script.js?v=16"></script>
   </body>
 </html>
