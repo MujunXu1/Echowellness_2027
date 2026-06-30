@@ -708,6 +708,24 @@ h3 {
   font-weight: 800;
 }
 
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.social-links a {
+  color: #b15f79;
+  font-weight: 800;
+}
+
+.social-links a:hover {
+  color: var(--navy);
+}
+
 .contact-list {
   display: grid;
   gap: 8px;
