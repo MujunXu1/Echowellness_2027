@@ -206,3 +206,48 @@ function initMotion() {
 }
 
 initMotion();
+
+function initCountUp() {
+  const counters = document.querySelectorAll("[data-countup-end]");
+
+  if (!counters.length || prefersReducedMotion) {
+    return;
+  }
+
+  const CountUpCtor = (window.countUp && window.countUp.CountUp) || window.CountUp;
+
+  if (!CountUpCtor) {
+    return;
+  }
+
+  const counterObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+
+        const el = entry.target;
+        const end = Number(el.dataset.countupEnd);
+
+        const counter = new CountUpCtor(el, end, {
+          duration: 1.8,
+          separator: ",",
+          prefix: el.dataset.countupPrefix || "",
+          suffix: el.dataset.countupSuffix || "",
+        });
+
+        if (!counter.error) {
+          counter.start();
+        }
+
+        observer.unobserve(el);
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  counters.forEach((counter) => counterObserver.observe(counter));
+}
+
+initCountUp();
