@@ -48,12 +48,39 @@ const lightbox = document.querySelector(".lightbox");
 const lightboxImage = document.querySelector(".lightbox img");
 const lightboxClose = document.querySelector(".lightbox-close");
 const lightboxBackdrop = document.querySelector(".lightbox-backdrop");
+const lightboxNavButtons = Array.from(document.querySelectorAll("[data-lightbox-direction]"));
 let lastPhotoTrigger = null;
+let activeGalleryTriggers = [];
+let activePhotoIndex = 0;
 
-function openLightbox(image, trigger) {
-  lastPhotoTrigger = trigger;
+function setLightboxImage(index) {
+  if (!activeGalleryTriggers.length || !lightboxImage) {
+    return;
+  }
+
+  activePhotoIndex = (index + activeGalleryTriggers.length) % activeGalleryTriggers.length;
+  const image = activeGalleryTriggers[activePhotoIndex].querySelector("img");
+
+  if (!image) {
+    return;
+  }
+
+  lastPhotoTrigger = activeGalleryTriggers[activePhotoIndex];
   lightboxImage.src = image.src;
   lightboxImage.alt = image.alt;
+}
+
+function getGalleryTriggers(trigger) {
+  const gallery = trigger.closest(".photo-scroll, .school-scroll");
+  const scope = gallery || document;
+  return Array.from(scope.querySelectorAll(".photo-trigger"));
+}
+
+function openLightbox(trigger) {
+  lastPhotoTrigger = trigger;
+  activeGalleryTriggers = getGalleryTriggers(trigger);
+  activePhotoIndex = Math.max(0, activeGalleryTriggers.indexOf(trigger));
+  setLightboxImage(activePhotoIndex);
   lightbox.classList.add("is-open");
   lightbox.setAttribute("aria-hidden", "false");
   document.body.classList.add("has-lightbox");
@@ -65,10 +92,20 @@ function closeLightbox() {
   lightbox.setAttribute("aria-hidden", "true");
   document.body.classList.remove("has-lightbox");
   lightboxImage.src = "";
+  activeGalleryTriggers = [];
+  activePhotoIndex = 0;
 
   if (lastPhotoTrigger) {
     lastPhotoTrigger.focus();
   }
+}
+
+function showAdjacentPhoto(direction) {
+  if (!lightbox || !lightbox.classList.contains("is-open")) {
+    return;
+  }
+
+  setLightboxImage(activePhotoIndex + direction);
 }
 
 function scrollGallery(targetId, direction) {
@@ -97,11 +134,15 @@ document.addEventListener("click", (event) => {
     return;
   }
 
-  const image = trigger.querySelector("img");
-
-  if (image) {
-    openLightbox(image, trigger);
+  if (trigger.querySelector("img")) {
+    openLightbox(trigger);
   }
+});
+
+lightboxNavButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    showAdjacentPhoto(Number(button.dataset.lightboxDirection || 1));
+  });
 });
 
 if (lightboxClose) {
@@ -115,6 +156,14 @@ if (lightboxBackdrop) {
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && lightbox && lightbox.classList.contains("is-open")) {
     closeLightbox();
+  }
+
+  if (event.key === "ArrowLeft") {
+    showAdjacentPhoto(-1);
+  }
+
+  if (event.key === "ArrowRight") {
+    showAdjacentPhoto(1);
   }
 });
 
