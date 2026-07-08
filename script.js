@@ -3,6 +3,41 @@ const siteNav = document.querySelector(".site-nav");
 const navLinks = Array.from(document.querySelectorAll(".site-nav a"));
 const sections = Array.from(document.querySelectorAll("main section[id]"));
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const pageTransitionMs = 180;
+
+function isInternalPageLink(link) {
+  if (!link || link.target || link.hasAttribute("download")) {
+    return false;
+  }
+
+  const url = new URL(link.href, window.location.href);
+
+  if (url.origin !== window.location.origin || url.pathname === window.location.pathname) {
+    return false;
+  }
+
+  return url.pathname.endsWith(".html") || url.pathname === "/" || url.pathname.endsWith("/");
+}
+
+document.addEventListener("click", (event) => {
+  const link = event.target.closest("a");
+
+  if (!isInternalPageLink(link) || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.defaultPrevented) {
+    return;
+  }
+
+  event.preventDefault();
+
+  if (prefersReducedMotion) {
+    window.location.href = link.href;
+    return;
+  }
+
+  document.body.classList.add("page-leaving");
+  window.setTimeout(() => {
+    window.location.href = link.href;
+  }, pageTransitionMs);
+});
 
 if (navToggle && siteNav) {
   navToggle.addEventListener("click", () => {
@@ -167,9 +202,7 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-function splitHeroTitle() {
-  const title = document.querySelector("#hero-title");
-
+function splitTitleWords(title) {
   if (!title) {
     return [];
   }
@@ -191,6 +224,14 @@ function splitHeroTitle() {
   });
 }
 
+function splitHeroTitle() {
+  return splitTitleWords(document.querySelector("#hero-title"));
+}
+
+function splitPageHeroTitle() {
+  return splitTitleWords(document.querySelector(".page-hero h1"));
+}
+
 function initMotion() {
   if (prefersReducedMotion || !window.gsap) {
     return;
@@ -198,6 +239,7 @@ function initMotion() {
 
   document.documentElement.dataset.motion = "gsap";
   const heroWords = splitHeroTitle();
+  const pageHeroWords = splitPageHeroTitle();
 
   gsap.from(".site-header", {
     y: -8,
@@ -206,22 +248,37 @@ function initMotion() {
     ease: "power2.out",
   });
 
-  const heroTimeline = gsap.timeline({
-    defaults: {
-      duration: 0.55,
-      ease: "power3.out",
-    },
-  });
+  if (heroWords.length) {
+    const heroTimeline = gsap.timeline({
+      defaults: {
+        duration: 0.55,
+        ease: "power3.out",
+      },
+    });
 
-  heroTimeline
-    .from(".hero-copy .eyebrow", { y: 8, opacity: 0 })
-    .from(heroWords, { y: 18, opacity: 0, stagger: 0.035 }, "-=0.25")
-    .from(".hero-lede", { y: 12, opacity: 0 }, "-=0.25")
-    .from(".hero-actions .button", { y: 10, opacity: 0, stagger: 0.06 }, "-=0.2")
-    .from(".fund-card", { y: 14, opacity: 0 }, "-=0.3");
+    heroTimeline
+      .from(heroWords, { y: 18, opacity: 0, stagger: 0.035 })
+      .from(".hero-lede", { y: 12, opacity: 0 }, "-=0.25")
+      .from(".hero-actions .button", { y: 10, opacity: 0, stagger: 0.06 }, "-=0.2")
+      .from(".fund-card", { y: 14, opacity: 0 }, "-=0.3");
+  }
+
+  if (pageHeroWords.length) {
+    const pageHeroTimeline = gsap.timeline({
+      defaults: {
+        duration: 0.55,
+        ease: "power3.out",
+      },
+    });
+
+    pageHeroTimeline
+      .from(".page-hero .eyebrow", { y: 8, opacity: 0 })
+      .from(pageHeroWords, { y: 18, opacity: 0, stagger: 0.035 }, "-=0.2")
+      .from(".page-hero p:not(.eyebrow)", { y: 12, opacity: 0 }, "-=0.25");
+  }
 
   const revealItems = document.querySelectorAll(
-    ".banner-strip img, .summary-strip, .mission-section > *, .org-grid article, .school-copy, .school-gallery, .priority-grid article, .impact-section > *, .future-grid article, .photos-section .section-heading, .photo-scroll-wrap, .contact-section > *"
+    ".banner-strip img, .summary-strip, .mission-section > *, .org-grid article, .school-copy, .school-gallery, .priority-grid article, .impact-section > *, .future-grid article, .photos-section .section-heading, .photo-scroll-wrap, .contact-section > *, .team-heading, .officer-card"
   );
 
   const revealObserver = new IntersectionObserver(

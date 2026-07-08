@@ -30,10 +30,46 @@ body {
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.55;
   text-rendering: optimizeLegibility;
+  animation: page-enter 320ms ease-out both;
 }
 
 body.has-lightbox {
   overflow: hidden;
+}
+
+body.page-leaving {
+  animation: page-leave 180ms ease-in both;
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes page-leave {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body,
+  body.page-leaving {
+    animation: none;
+  }
 }
 
 img {
@@ -400,6 +436,29 @@ h3 {
   padding: clamp(66px, 8vw, 108px) clamp(20px, 5vw, 76px);
 }
 
+.page-hero {
+  min-height: 56vh;
+  display: grid;
+  align-content: end;
+  gap: 16px;
+  padding: 150px clamp(20px, 5vw, 76px) clamp(58px, 8vw, 96px);
+  background:
+    linear-gradient(135deg, rgba(239, 248, 247, 0.94), rgba(200, 232, 228, 0.76)),
+    radial-gradient(circle at 82% 14%, rgba(240, 168, 187, 0.32), transparent 24rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.page-hero h1 {
+  max-width: 980px;
+}
+
+.page-hero p:not(.eyebrow) {
+  max-width: 720px;
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: clamp(1.08rem, 2vw, 1.28rem);
+}
+
 .split {
   display: grid;
   grid-template-columns: minmax(0, 0.82fr) minmax(320px, 0.76fr);
@@ -586,6 +645,100 @@ h3 {
 
 .photos-section {
   background: var(--paper);
+}
+
+.officers-section {
+  background: var(--paper);
+}
+
+.team-stack {
+  display: grid;
+  gap: clamp(34px, 5vw, 58px);
+}
+
+.officer-team {
+  display: grid;
+  gap: 18px;
+}
+
+.team-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.team-heading .eyebrow {
+  margin-bottom: 0;
+}
+
+.team-heading h3 {
+  margin-bottom: 0;
+  font-size: clamp(1.55rem, 3vw, 2.35rem);
+}
+
+.officer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 24px);
+}
+
+.officer-card {
+  min-height: 310px;
+  display: grid;
+  align-content: start;
+  padding: clamp(24px, 3vw, 34px);
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 18px 48px rgba(43, 43, 46, 0.07);
+}
+
+.officer-avatar {
+  width: 76px;
+  height: 76px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 24px;
+  border-radius: 50%;
+  color: var(--white);
+  background:
+    linear-gradient(135deg, rgba(94, 200, 187, 0.94), rgba(240, 168, 187, 0.92)),
+    var(--teal);
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.officer-photo {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  margin-bottom: 24px;
+  border-radius: 8px;
+  object-fit: cover;
+  object-position: center 34%;
+  filter: brightness(1.03) contrast(0.98) saturate(0.96);
+}
+
+.officer-role {
+  margin-bottom: 8px;
+  color: #b15f79;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.officer-card h3 {
+  margin-bottom: 12px;
+  font-size: 1.35rem;
+}
+
+.officer-card p:last-child {
+  margin-bottom: 0;
+  color: var(--muted);
 }
 
 .photo-tools {
@@ -914,6 +1067,7 @@ h3 {
   .org-grid,
   .future-grid,
   .priority-grid,
+  .officer-grid,
   .impact-section,
   .contact-section,
   .summary-strip,
