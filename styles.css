@@ -459,6 +459,21 @@ h3 {
   font-size: clamp(1.08rem, 2vw, 1.28rem);
 }
 
+.current-event-hero {
+  min-height: 72vh;
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 0.48fr);
+  align-content: center;
+  align-items: center;
+}
+
+.page-hero-copy {
+  max-width: 840px;
+}
+
+.event-card strong {
+  color: var(--teal);
+}
+
 .split {
   display: grid;
   grid-template-columns: minmax(0, 0.82fr) minmax(320px, 0.76fr);
@@ -470,11 +485,15 @@ h3 {
   font-size: 1.08rem;
 }
 
-.goal-section,
 .org-section,
 .future-section,
 .contact-section {
   background: var(--paper);
+}
+
+.goal-section {
+  background: var(--soft);
+  border-block: 1px solid var(--line);
 }
 
 .mission-section {

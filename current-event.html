@@ -33,7 +33,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     >
-    <link rel="stylesheet" href="styles.css?v=9">
+    <link rel="stylesheet" href="styles.css?v=12">
   </head>
   <body>
     <header class="site-header">
@@ -59,12 +59,34 @@
 
     <main>
       <section class="page-hero current-event-hero" aria-labelledby="current-event-title">
-        <p class="eyebrow">Current Event</p>
-        <h1 id="current-event-title">Journey School fundraiser.</h1>
-        <p>
-          This year's Givebutter campaign supports Journey School for the
-          Uniquely Gifted and Talented.
-        </p>
+        <div class="page-hero-copy">
+          <p class="eyebrow">Current Event</p>
+          <h1 id="current-event-title">Journey School fundraiser.</h1>
+          <p>
+            This year's Givebutter campaign supports Journey School for the
+            Uniquely Gifted and Talented.
+          </p>
+        </div>
+
+        <aside class="fund-card event-card" aria-label="Benefit concert details">
+          <p class="eyebrow">Upcoming Concert</p>
+          <strong>August 22</strong>
+          <p>EchoWellness benefit concert for the Journey School fundraiser.</p>
+          <dl>
+            <div>
+              <dt>Time</dt>
+              <dd>3:00-5:00 PM</dd>
+            </div>
+            <div>
+              <dt>Room</dt>
+              <dd>MATCH, Matchbox 4</dd>
+            </div>
+            <div>
+              <dt>Address</dt>
+              <dd>3400 Main Street, Houston, TX 77002</dd>
+            </div>
+          </dl>
+        </aside>
       </section>
 
       <section id="school" class="section school-section">
@@ -227,6 +249,6 @@
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="script.js?v=20"></script>
+    <script src="script.js?v=22"></script>
   </body>
 </html>
