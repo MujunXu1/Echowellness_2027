@@ -227,19 +227,6 @@ h3 {
     linear-gradient(135deg, rgba(255, 255, 255, 0.84) 0%, rgba(239, 248, 247, 0.96) 52%, rgba(200, 232, 228, 0.86) 100%);
 }
 
-.hero::after {
-  content: "";
-  position: absolute;
-  right: clamp(20px, 8vw, 118px);
-  bottom: clamp(36px, 7vw, 88px);
-  width: min(34vw, 420px);
-  aspect-ratio: 1;
-  border: 1px solid rgba(240, 168, 187, 0.55);
-  border-radius: 50%;
-  opacity: 0.45;
-  pointer-events: none;
-}
-
 .hero-copy {
   position: relative;
   z-index: 1;
@@ -1104,10 +1091,6 @@ h3 {
 
   .hero {
     min-height: auto;
-  }
-
-  .hero::after {
-    display: none;
   }
 
 }
