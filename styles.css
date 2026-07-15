@@ -24,9 +24,7 @@ html {
 body {
   margin: 0;
   color: var(--ink);
-  background:
-    radial-gradient(circle at 18% 0%, rgba(94, 200, 187, 0.18), transparent 28rem),
-    var(--paper);
+  background: var(--paper);
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.55;
   text-rendering: optimizeLegibility;
@@ -429,9 +427,7 @@ h3 {
   align-content: end;
   gap: 16px;
   padding: 150px clamp(20px, 5vw, 76px) clamp(58px, 8vw, 96px);
-  background:
-    linear-gradient(135deg, rgba(239, 248, 247, 0.94), rgba(200, 232, 228, 0.76)),
-    radial-gradient(circle at 82% 14%, rgba(240, 168, 187, 0.32), transparent 24rem);
+  background: linear-gradient(135deg, rgba(239, 248, 247, 0.94), rgba(200, 232, 228, 0.76));
   border-bottom: 1px solid var(--line);
 }
 
